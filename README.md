@@ -4,6 +4,7 @@ Here is a playground to install self-hosted sentry in test environment
 
 ## Documentation
 
+- [repository](https://github.com/getsentry/onpremise)
 - [self-hosted](https://develop.sentry.dev/self-hosted/)
 - [Improve Your Workflow with Sentry](https://blog.sentry.io/2018/03/06/the-sentry-workflow)
 
