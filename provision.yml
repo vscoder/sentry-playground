@@ -1,0 +1,15 @@
+---
+- name: Provision all vagrant instances
+  hosts: all
+  become: yes
+  vars:
+    #selinux_mode: enforcing
+    selinux_mode: permissive
+    selinux_reboot: yes
+    selinux_utils: yes
+    docker_users:
+      - vagrant
+  roles:
+    - name: ansible-role-selinux
+      when: ansible_facts['os_family'] == 'RedHat'
+    - name: geerlingguy.docker
