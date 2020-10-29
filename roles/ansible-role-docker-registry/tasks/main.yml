@@ -1,0 +1,14 @@
+---
+- name: Provide files and directories
+  import_tasks: files.yml
+  when: docker_registry_files | bool
+  tags:
+    - docker_registry
+    - docker_registry_files
+
+- name: docker-compose up
+  import_tasks: compose_up.yml
+  when: docker_registry_compose_up | bool
+  tags:
+    - docker_registry
+    - docker_registry_compose_up

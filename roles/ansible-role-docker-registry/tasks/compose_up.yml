@@ -1,0 +1,9 @@
+---
+- name: Up docker-compose environment
+  docker_compose:
+    project_src: "{{ docker_registry_deploy_path }}"
+  register: output
+
+- name: docker-compose output
+  debug:
+    var: output

@@ -7,9 +7,17 @@
     selinux_mode: permissive
     selinux_reboot: yes
     selinux_utils: yes
-    docker_users:
-      - vagrant
   roles:
     - name: ansible-role-selinux
       when: ansible_facts['os_family'] == 'RedHat'
+
+- name: Provide docker-registry
+  hosts: registry
+  become: yes
+  vars:
+    docker_users:
+      - vagrant
+  roles:
     - name: geerlingguy.docker
+    - name: ansible-role-docker-registry
+      docker_registry_compose_up: no

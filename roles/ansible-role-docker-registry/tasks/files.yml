@@ -1,0 +1,20 @@
+---
+- name: Create deploy directory
+  file:
+    state: directory
+    path: "{{ docker_registry_deploy_path }}"
+
+- name: Create data directory
+  file:
+    state: directory
+    path: "{{ docker_registry_data_dir }}"
+
+- name: Provide docker-compose file
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ docker_registry_deploy_path }}/docker-compose.yml"
+
+- name: Provide docker-compose file
+  template:
+    src: registry.yml.j2
+    dest: "{{ docker_registry_deploy_path }}/registry.yml"

@@ -815,3 +815,7 @@ sentry_onpremise_zookeeper_1                     /etc/confluent/docker/run      
 ## Login
 
 After docker-compose environment is up and running, it is possible to login sentry via http://127.0.0.1:19000
+
+## BONUS
+
+As a bonus, here is an instruction [how to run sentry in isolated environment](./ISOLATED.md)

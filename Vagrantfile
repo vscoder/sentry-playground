@@ -24,36 +24,36 @@ MACHINES = {
                 { :path => "./provision/0-whoami.sh" }
               ],
             },
-  # :"hw16-web" => {
-  #             # VM box
-  #             :box_name => "centos/7",
-  #             # VM CPU count
-  #             :cpus => 2,
-  #             # VM RAM size (Mb)
-  #             :memory => 512,
-  #             # networks
-  #             :net => [
-  #               { :ip => "192.168.10.11" },
-  #             ],
-  #             # forwarded ports
-  #             :forwarded_port => [
-  #               # web server
-  #               { :guest => 80, :host => 1080 },
-  #             ],
-  #             # provision files
-  #             :provision_files => [],
-  #             # provision scripts
-  #             :provision_scripts => [
-  #               { :path => "./provision/0-whoami.sh" }
-  #             ],
-  #           }
+  :"registry" => {
+              # VM box
+              :box_name => "centos/7",
+              # VM CPU count
+              :cpus => 2,
+              # VM RAM size (Mb)
+              :memory => 512,
+              # networks
+              :net => [
+                { :ip => "192.168.10.11" },
+              ],
+              # forwarded ports
+              # :forwarded_port => [
+              #   # web server
+              #   { :guest => 80, :host => 1080 },
+              # ],
+              # provision files
+              :provision_files => [],
+              # provision scripts
+              :provision_scripts => [
+                { :path => "./provision/0-whoami.sh" }
+              ],
+            }
 }
 
 ANSIBLE_GROUPS = {
-  # Central log server
+  # Sentry server
   "server" => [ "sentry-server" ],
-  # Web server
-  #"web" => [ "client" ],
+  # Registry
+  "registry" => [ "registry" ],
 }
 
 # # Function to check whether VM was already provisioned
@@ -119,7 +119,7 @@ Vagrant.configure("2") do |config|
       # Yes, that's a lot of magic to provision all instances
       # after the last one becomes up
       # https://www.vagrantup.com/docs/provisioning/ansible.html#ansible-parallel-execution
-      if boxname.to_s == "sentry-server"
+      if boxname.to_s == "registry"
         box.vm.provision "ansible" do |ansible|
           ansible.limit = "all"
           ansible.playbook = "provision.yml"

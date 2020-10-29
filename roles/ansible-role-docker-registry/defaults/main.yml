@@ -1,0 +1,17 @@
+---
+###
+# Flags
+###
+docker_registry_files: yes
+docker_registry_compose_up: yes
+
+###
+# Files
+###
+docker_registry_deploy_path: /var/deploy
+docker_registry_data_dir: /data
+#
+###
+# compose
+###
+
