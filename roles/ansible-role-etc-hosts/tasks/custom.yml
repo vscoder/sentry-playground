@@ -1,0 +1,10 @@
+---
+- name: Provide custom block of /etc/hosts
+  blockinfile:
+    path: /etc/hosts
+    create: yes
+    backup: yes
+    block: |
+      {% for ip, names in etc_hosts_custom_hosts.items() %}
+      {{ ip }}  {{ names | join(" ") }}
+      {% endfor %}

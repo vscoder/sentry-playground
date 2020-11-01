@@ -1,0 +1,17 @@
+---
+- name: Check /etc/hosts exists
+  stat:
+    path: /etc/hosts
+  register: _etc_hosts_file
+
+- name: Create backup of /etc/hosts
+  copy:
+    remote_srt: yes
+    src: /etc/hosts
+    dest: "/etc/hosts.removed_{{ ansible_date_time.iso8601_basic }}"
+  when: _etc_hosts_file.stat.exists
+
+- name: Ensure original /etc/hosts is removed
+  file:
+    path: /etc/hosts
+    state: absent

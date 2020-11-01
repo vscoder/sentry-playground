@@ -1,0 +1,18 @@
+---
+###
+# Flags
+###
+etc_hosts_replace: no
+etc_hosts_custom: yes
+
+###
+# Hosts
+###
+etc_hosts_custom_hosts:
+  {}
+  # "10.0.0.1":
+  #   - myhost
+  #   - myhost.example.com
+  # "fc00::1":
+  #   - myv6host
+  #   - myv6host.example.com

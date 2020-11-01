@@ -1,0 +1,14 @@
+---
+- name: Replace original /etc/hosts
+  import_tasks: replace.yml
+  when: etc_hosts_replace | bool
+  tags:
+    - etc_hosts
+    - etc_hosts_replace
+
+- name: Provide custom content of /etc/hosts
+  import_tasks: custom.yml
+  when: etc_hosts_custom | bool
+  tags:
+    - etc_hosts
+    - etc_hosts_custom
