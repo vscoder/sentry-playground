@@ -11,7 +11,8 @@ Here is 2 instances:
 ## TODO
 
 - [ ] Automate up of docker registry (fix `provision.yml`)
-- [ ] Configure docker on `sentry-server` to use `registry` as mirror
+- [x] Provide dns configuration on `sentry-server` via `/etc/hosts`
+- [x] Configure docker on `sentry-server` to use `registry` as mirror
 - [ ] Download sentry/onpremise on `sentry-server`
 - [ ] Disable internet on `sentry-server` (delete default gateway)
 - [ ] Try to install sentry w/o instarnet access

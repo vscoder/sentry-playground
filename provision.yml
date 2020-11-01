@@ -11,13 +11,34 @@
     - name: ansible-role-selinux
       when: ansible_facts['os_family'] == 'RedHat'
 
-- name: Provide docker-registry
+- name: Provision docker-registry
   hosts: registry
   become: yes
   vars:
-    docker_users:
+    skip_swarm: true
+    docker_group_users:
       - vagrant
   roles:
-    - name: geerlingguy.docker
+    - name: atosatto.docker-swarm
     - name: ansible-role-docker-registry
       docker_registry_compose_up: no
+
+- name: Provision sentry-server
+  hosts: server
+  become: yes
+  vars:
+    skip_swarm: true
+    docker_group_users:
+      - vagrant
+    etc_hosts_custom_hosts:
+      "192.168.10.11":
+        - registry
+        - registry.local
+    docker_daemon_config:
+      registry-mirrors:
+        - http://registry.local:5000
+      insecure-registries:
+        - registry.local:5000
+  roles:
+    - name: ansible-role-etc-hosts
+    - name: atosatto.docker-swarm
