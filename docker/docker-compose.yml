@@ -1,0 +1,20 @@
+version: "3.4"
+services:
+  snuba-cron:
+    image: $DOCKER_HUB_USER/snuba-cron:test
+    build:
+      context: ./cron
+      args:
+        BASE_IMAGE: "$SNUBA_IMAGE"
+  symbolicator-cron:
+    image: $DOCKER_HUB_USER/symbolicator-cron:test
+    build:
+      context: ./cron
+      args:
+        BASE_IMAGE: "$SYMBOLICATOR_IMAGE"
+  sentry-cron:
+    image: $DOCKER_HUB_USER/sentry-cron:test
+    build:
+      context: ./cron
+      args:
+        BASE_IMAGE: "$SENTRY_IMAGE"

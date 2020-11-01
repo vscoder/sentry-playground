@@ -1,0 +1,28 @@
+---
+- name: Prepare sentry-server
+  hosts: server
+  become: yes
+  vars:
+    sentry_repo_uri: https://github.com/getsentry/onpremise.git
+    sentry_repo_path: /var/deploy/sentry
+    ansible_network_os: linux
+  pre_tasks:
+    - name: Ensure deploy directory exists
+      file:
+        path: "{{ sentry_repo_path }}"
+        state: directory
+        owner: vagrant
+        group: vagrant
+    - name: Ensure git installed
+      package:
+        name: git
+        state: present
+  tasks:
+    - name: Download sentry self-hosted repo
+      become: no
+      git:
+        repo: "{{ sentry_repo_uri }}"
+        dest: "{{ sentry_repo_path }}"
+        version: 20.10.1
+    - name: Remove default route
+      command: ip route del default

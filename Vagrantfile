@@ -36,10 +36,10 @@ MACHINES = {
                 { :ip => "192.168.10.11" },
               ],
               # forwarded ports
-              # :forwarded_port => [
-              #   # web server
-              #   { :guest => 80, :host => 1080 },
-              # ],
+              :forwarded_port => [
+                # artifactory
+                { :guest => 8080, :host => 8080 },
+              ],
               # provision files
               :provision_files => [],
               # provision scripts
