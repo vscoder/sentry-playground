@@ -62,13 +62,13 @@ vagrant ssh sentry-server
 cd /var/deploy/sentry
 ```
 
-Add to `.env` variable `DOCKER_HYB_USER` with the same value as in local `./docker/.env`. By default is:
+Add to `.env` variable `DOCKER_HUB_USER` with the same value as in local `./docker/.env`. By default is:
 ```shell
 # Custom variables
 DOCKER_HUB_USER=vscoder
 ```
 
-Update `docker-compose.yml`. Set custom images and comment `build` sections for services:
+Update `docker-compose.yml` (or create corresponding `docker-compose.override.yml` [documentation](https://docs.docker.com/compose/extends/)). Set custom images and comment `build` sections for services:
 - `snuba-cleanup:`
 ```yaml
   snuba-cleanup:
