@@ -8,6 +8,8 @@ Here is 2 instances:
 - `sentry-server` with no access to the internet and already downloaded [sentry self-hosted repository](https://github.com/getsentry/onpremise)
 - `registry` with access to the internet and hosting docker registry as docker hub mirror, like described [here](https://docs.docker.com/registry/recipes/mirror/)
 
+![scheme](scheme.png)
+
 ## How to up
 
 ### Custom docker images
