@@ -122,4 +122,4 @@ Install sentry
 - [x] Disable internet on `sentry-server` (delete default gateway)
 - [ ] Provide debian repository proxy
 - [ ] Configure `sentry-server` to use debian repository proxy except real one
-- [ ] Try to install sentry w/o instarnet access
+- [x] Install sentry w/o internet access
