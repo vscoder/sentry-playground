@@ -4,7 +4,7 @@ Based on [this](https://medium.com/@andrenit/docker-and-artifactory-as-a-registr
 
 ## Problem description
 
-If we have restricted environment with possibility to get any artifacts only from one artifacts registry like Artifactory or simslar, there is some problems to install sentry on-premise from [sentry self-hosted repository](https://github.com/getsentry/onpremise). These problems is:
+If we have restricted environment with possibility to get any artifacts only from one artifacts registry like Artifactory or simslar, there is some problems to install sentry on-premise from [sentry self-hosted repository](https://github.com/getsentry/onpremise). These problems are:
 1. All services from `docker-compose.yml` have their `image:`s named w/o registry name. It supposes that these images will be downloaded from  default docker registry named [docker hub](https://hub.docker.com)
 2. Three of services: `snuba-cleanup`, `symbolicator-cleanup` and `sentry-cleanup` are building locally using `./corn` context. One of instructions in `Dockerfile` installs `cron` package from debian repository.
 
