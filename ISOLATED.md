@@ -8,7 +8,7 @@ If we have restricted environment with possibility to get any artifacts only fro
 1. All services from `docker-compose.yml` have their `image:`s named w/o registry name. It supposes that these images will be downloaded from  default docker registry named [docker hub](https://hub.docker.com)
 2. Three of services: `snuba-cleanup`, `symbolicator-cleanup` and `sentry-cleanup` are built locally using `./corn` context. One of instructions in `Dockerfile` installs `cron` package from debian repository.
 
-But docker hub and debian package repository are inaccessible from our restricted environment. So below are some steps to solve these problems described.
+But docker hub and debian package repository are inaccessible from our restricted environment. So below are described some steps to solve these problems.
 
 ## Environment
 
